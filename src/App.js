@@ -1,24 +1,22 @@
-import logo from './logo.svg';
+import React from 'react';
+import { createContext , useState} from 'react';
 import './App.css';
+import FileForm from './components/FileForm';
+import HotelImage from './components/HotelImage';
+
+
+export const AppContext = createContext(null)
+
 
 function App() {
+  const [hotel, setHotel] = useState(AppContext)
   return (
+    <AppContext.Provider value={[hotel, setHotel]}>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+<FileForm/>
+<HotelImage/>
     </div>
+    </AppContext.Provider>
   );
 }
 
